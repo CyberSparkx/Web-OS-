@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shery OS | Mix of multiple os</title>
+  <link rel="icon" href="https://ik.imagekit.io/sheryians/Sheryians_logo_EzwgcppnD?updatedAt=1701272916848" type="image/x-icon" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+<body class="text-white font-sans overflow-hidden">
+  <!-- Top Taskbar (MacOS Style) -->
+  <div id="taskbar" class="fixed top-0 left-0 w-full h-8 bg-black/30 backdrop-blur-md flex items-center justify-between px-4 text-xs z-50">
+    <div class="flex items-center gap-4">
+      <span class="font-semibold"> Shery OS</span>
+      <span class="cursor-pointer hover:underline">File</span>
+      <span class="cursor-pointer hover:underline">Edit</span>
+      <span class="cursor-pointer hover:underline">View</span>
+      <span class="cursor-pointer hover:underline">Window</span>
+      <span class="cursor-pointer hover:underline">Help</span>
+    </div>
+    <div id="clock" onclick="toggleControlCenter()" class="font-mono"></div>
+  </div>
+
+  <!-- Desktop Area -->
+  <div id="desktop" class="w-full h-screen relative pt-10 pb-14 px-4"></div>
+
+  <!-- Bottom Toolbar / Dock -->
+  <div id="dock" class="fixed bottom-2 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/30 backdrop-blur-md rounded-2xl flex gap-4 items-center z-50">
+    <img src="https://img.icons8.com/ios-glyphs/30/ffffff/folder-invoices--v1.png" onclick="openFileManager()" class="w-8 h-8 hover:scale-110 transition" alt="Files">
+    <img src="https://img.icons8.com/ios-glyphs/30/ffffff/edit--v1.png" onclick="openFileManager()" class="w-8 h-8 hover:scale-110 transition" alt="Notes">
+    <img src="https://img.icons8.com/ios-glyphs/30/ffffff/console.png" onclick="openTerminalWindow()" class="w-8 h-8 hover:scale-110 transition" alt="Terminal">
+  </div>
+
+  <!-- Context Menu -->
+  <ul id="context-menu" class="hidden absolute bg-gray-700 border border-gray-600 rounded text-sm z-50">
+    <li class="p-2 hover:bg-gray-600 cursor-pointer" data-action="create-folder">Create Folder</li>
+    <li class="p-2 hover:bg-gray-600 cursor-pointer" data-action="create-file">Create File</li>
+    <li class="p-2 hover:bg-gray-600 cursor-pointer">Change Wallpaper</li>
+  </ul>
+
+
+  
+
+  <!-- Clock Script -->
+  <script>
+    const clock = document.getElementById("clock");
+    function updateClock() {
+      const now = new Date();
+      const options = { weekday: 'short', hour: '2-digit', minute: '2-digit' };
+      clock.textContent = now.toLocaleString('en-US', options);
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+  <!-- Save Content Script -->
+  <script>
+    document.addEventListener("keydown", function (e) {
+      if (e.ctrlKey && e.key === "s") {
+        e.preventDefault();
+        const focused = document.activeElement;
+        if (focused && focused.isContentEditable) {
+          const content = focused.textContent;
+          localStorage.setItem("file-content", content);
+          alert("File content saved!");
+        }
+      }
+    });
+  </script>
+
+  <!-- Main Script -->
+  <script src="script.js"></script>
+  <script src="terminal.js"></script>
+  <script src="fileSystem.js"></script>
+  <script src="conteols.js"></script>
+  <script src="menu-bar.js"></script>
+</body>
+</html>
