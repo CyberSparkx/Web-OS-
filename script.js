@@ -11,7 +11,7 @@ const defaultApps = [
   { type: "folder", title: "Documents" },
   { type: "folder", title: "Projects" },
   { type: "file", title: "Notes.txt" },
-  { type: "app", title: "Chrome", icon: "https://img.icons8.com/color/48/chrome--v1.png" },
+  { type: "app" , title: "Chrome", icon: "https://img.icons8.com/color/48/chrome--v1.png" },
   { type: "app", title: "Brave", icon: "https://img.icons8.com/color/48/brave-web-browser.png" },
   { type: "app", title: "VS Code", icon: "https://img.icons8.com/color/48/visual-studio-code-2019.png" }
 ];
@@ -33,9 +33,18 @@ function addDockShortcut(title, iconURL) {
   const button = document.createElement("button");
   button.className = "hover:scale-110 transition-transform";
   button.innerHTML = `<img src="${iconURL}" alt="${title}" title="${title}" class="w-10 h-10" />`;
-  button.onclick = () => alert(`${title} launched (demo)`);
+  
+  button.onclick = () => {
+    if (title === "Chrome") {
+      openFakeChromeWindow();
+    } else {
+      alert(`${title} launched (demo)`);
+    }
+  };
+
   dock.appendChild(button);
 }
+
 
 desktop.addEventListener("contextmenu", (e) => {
   e.preventDefault();
@@ -44,7 +53,7 @@ desktop.addEventListener("contextmenu", (e) => {
   contextMenu.classList.remove("hidden");
 });
 
-window.addEventListener("click", () => contextMenu.classList.add("hidden"));
+window.addEventListener("click", () => contextMenu.classList.add("hidden")); 
 
 contextMenu.addEventListener("click", (e) => {
   const action = e.target.dataset.action;

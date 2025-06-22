@@ -33,8 +33,8 @@ function toggleControlCenter() {
   wrapper.id = "control-center";
   wrapper.style = `
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 50px;
+    right: 5px;
     width: 360px;
     z-index: 1000;
     background: rgba(25, 25, 25, 0.7);

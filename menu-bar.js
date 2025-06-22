@@ -80,7 +80,7 @@ function toggleStartMenu() {
       ${[
         { name: "Chrome", icon: "https://img.icons8.com/color/48/chrome--v1.png" },
         { name: "VS Code", icon: "https://img.icons8.com/color/48/visual-studio-code-2019.png" },
-        { name: "Terminal", icon: "https://img.icons8.com/ios-filled/50/terminal.png" },
+        { name: "Terminal", icon: "https://cdn-icons-png.flaticon.com/512/9796/9796882.png" },
         { name: "Spotify", icon: "https://img.icons8.com/color/48/spotify--v1.png" },
         { name: "Files", icon: "https://img.icons8.com/color/48/folder-invoices--v1.png" },
         { name: "YouTube", icon: "https://img.icons8.com/color/48/youtube-play.png" },
