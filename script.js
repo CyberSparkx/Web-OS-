@@ -37,6 +37,8 @@ function addDockShortcut(title, iconURL) {
   button.onclick = () => {
     if (title === "Chrome") {
       openFakeChromeWindow();
+    }else if (title === "VS Code") {
+      openVSCodeWindow();
     } else {
       alert(`${title} launched (demo)`);
     }
