@@ -11,10 +11,13 @@ const defaultApps = [
   { type: "folder", title: "Documents" },
   { type: "folder", title: "Projects" },
   { type: "file", title: "Notes.txt" },
-  { type: "app" , title: "Chrome", icon: "https://img.icons8.com/color/48/chrome--v1.png" },
+  { type: "app", title: "Window", icon: "https://img.icons8.com/?size=512&id=TuXN3JNUBGOT&format=png" },
+  { type: "app", title: "Chrome", icon: "https://img.icons8.com/color/48/chrome--v1.png" },
   { type: "app", title: "Brave", icon: "https://img.icons8.com/color/48/brave-web-browser.png" },
-  { type: "app", title: "VS Code", icon: "https://img.icons8.com/color/48/visual-studio-code-2019.png" }
+  { type: "app", title: "VS Code", icon: "https://img.icons8.com/color/48/visual-studio-code-2019.png" },
+  { type: "app", title: "Camera", icon: "https://img.icons8.com/color/48/camera.png" } // ✅ Camera app
 ];
+
 
 window.addEventListener("DOMContentLoaded", () => {
   defaultApps.forEach((app, i) => {
@@ -39,6 +42,12 @@ function addDockShortcut(title, iconURL) {
       openFakeChromeWindow();
     }else if (title === "VS Code") {
       openVSCodeWindow();
+    }else if (title === "Brave") {
+      openFakeBraveWindow();
+    }else if (title === "Camera") {
+      openCameraApp();
+    }else if (title === "Window") {
+      toggleStartMenu();
     } else {
       alert(`${title} launched (demo)`);
     }
